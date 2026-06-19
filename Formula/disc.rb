@@ -23,8 +23,8 @@ class Disc < Formula
   homepage "https://disc.sh"
   url "https://github.com/systemsoft/disc/archive/refs/tags/v2026.06.15.tar.gz"
   version "2026.06.18"
-  license "Apache-2.0"
   sha256 "ce0afb3db494c2ea68edfa07e77838141dbe949f4eb2b31827061c6c7c2b05ac"
+  license "Apache-2.0"
 
   # Cutting-edge: install from `primary` branch via `brew install --HEAD disc`.
   # Useful while bundles ship faster than tags.
