@@ -21,9 +21,9 @@
 class Disc < Formula
   desc "TypeScript-native, schema-first database (Gel/EdgeDB compatible)"
   homepage "https://disc.sh"
-  url "https://github.com/systemsoft/disc/archive/refs/tags/v2026.06.21.tar.gz"
-  version "2026.06.21"
-  sha256 "10dc7590c2d63f5459726b3d9b5dcb5e1fcc4b4f071db687b875c96c95575dc1"
+  url "https://github.com/systemsoft/disc/archive/refs/tags/v2026.06.22.tar.gz"
+  version "2026.06.22"
+  sha256 "983e7182655bbc423c459a2c3a122ac478f6a2adab70e7ca03e51ed9832caa71"
   license "Apache-2.0"
 
   # Cutting-edge: install from `primary` branch via `brew install --HEAD disc`.
