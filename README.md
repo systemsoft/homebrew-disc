@@ -33,5 +33,5 @@ brew install disc
 ## Updating
 
 ```sh
-brew update && brew upgrade systemsoft/disc
+brew update && brew upgrade systemsoft/disc/disc
 ```
