@@ -23,7 +23,7 @@ class Disc < Formula
   homepage "https://disc.sh"
   url "https://github.com/systemsoft/disc/archive/refs/tags/v2026.09.14.1.tar.gz"
   version "2026.09.14.1"
-  sha256 "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+  sha256 "7c213593137122b9c76d5c05ab1798016eeeb712f66ccd1b857d7da5ac2755ec"
   license "Apache-2.0"
 
   # Cutting-edge: install from `primary` branch via `brew install --HEAD disc`.
