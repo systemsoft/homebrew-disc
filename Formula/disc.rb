@@ -21,34 +21,33 @@
 class Disc < Formula
   desc "TypeScript-native, schema-first database (Gel/EdgeDB compatible)"
   homepage "https://disc.sh"
-  url "https://github.com/systemsoft/disc/archive/refs/tags/v2026.09.28.tar.gz"
-  version "2026.09.28"
-  sha256 "c27f59e4de12c92353be5ff8af6f47da835d69385edc30b259ffdb9eb6154e47"
+  version "2026.10.23"
   license "Apache-2.0"
 
-  # Cutting-edge: install from `primary` branch via `brew install --HEAD disc`.
-  # Useful while bundles ship faster than tags.
-  head "https://github.com/systemsoft/disc.git", branch: "primary"
+  on_macos do
+    depends_on arch: :arm64
 
-  depends_on "deno"
-  depends_on "oven-sh/bun/bun"
+    on_arm do
+      url "https://github.com/systemsoft/disc/releases/download/v#{version}/disc-darwin-arm64"
+      sha256 "0b9e9b04a01a8df9514a5111228b954ad5bc994f8d88d144c98045e7dc958f6e"
+    end
+  end
 
-  def install
-    # Build the SvelteKit UI so the embedded asset manifest is non-empty.
-    cd "ui" do
-      system "bun", "install", "--frozen-lockfile"
-      system "bun", "run", "build"
+  on_linux do
+    on_arm do
+      url "https://github.com/systemsoft/disc/releases/download/v#{version}/disc-linux-arm64"
+      sha256 "0534db37db32816a11c1dcb441a68b52e32f2eaf080b672a71aa8d87f95a0972"
     end
 
-    # Compile the Disc binary. `DISC_BUILD_NO_BUNDLE_PG=1` skips the PG
-    # cache walk explicitly — the brew machine wouldn’t have one anyway,
-    # but setting the var avoids a misleading "no embedded PG (no cache
-    # at <path>)" log line during the build.
-    ENV["DISC_BUILD_NO_BUNDLE_PG"] = "1"
-    system "deno", "task", "build"
+    on_intel do
+      url "https://github.com/systemsoft/disc/releases/download/v#{version}/disc-linux-x64"
+      sha256 "7ef200287d4261af691ff9f23d401773a7fb591d7cb9f67f6240ae7896b86652"
+    end
+  end
 
-    # Install the produced binary to the Homebrew-managed bin path.
-    bin.install "disc"
+  def install
+    # The download is the bare executable, named after its platform.
+    bin.install Dir["disc-*"].first => "disc"
   end
 
   test do
